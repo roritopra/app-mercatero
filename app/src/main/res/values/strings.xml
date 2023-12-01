@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">MercateroApp</string>
+    <string name="app_name">Mercatero</string>
+    <string name="enter_your_email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="forget_pass"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="login">Inicia sesión</string>
+    <string name="consumidor">Consumidor</string>
+    <string name="pass_checkbox_msg1"><u>Estoy de acuerdo con la política de privacidad y el uso de los datos solicitados.</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

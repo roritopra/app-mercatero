@@ -1,9 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MercateroApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Mercatero" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:statusBarColor">@color/green</item>
+        <item name="colorControlActivated">@color/green</item>
     </style>
 
-    <style name="Theme.MercateroApp" parent="Base.Theme.MercateroApp" />
+    <style name="Theme.Mercatero" parent="Base.Theme.Mercatero" />
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grayLite</item>
+        <item name="colorControlActivated">@color/green</item>
+
+    </style>
+
+    <style name="RatingBarYellow" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grayLite</item>
+        <item name="colorControlActivated">@color/yellow</item>
+
+    </style>
+
 </resources>

@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
+    //id("com.google.gms.google-services")
 }
 
 android {
@@ -33,7 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     buildFeatures {
         viewBinding=true
     }
@@ -54,6 +55,12 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
 
+
+    // Import the Firebase BoM
+    /*implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
+    implementation ("com.google.firebase:firebase-auth-ktx")
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+*/
     //View pager dots indicator
     implementation("com.tbuonomo:dotsindicator:5.0")
 

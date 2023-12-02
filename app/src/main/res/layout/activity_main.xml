@@ -47,6 +47,7 @@
         app:iconTint="@color/green"
         app:iconTintActive="@color/green"
         app:activeItem="0"
-        app:duration="@integer/material_motion_duration_short_1"/>
+        app:duration="@integer/material_motion_duration_short_1"
+        tools:ignore="MissingClass" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

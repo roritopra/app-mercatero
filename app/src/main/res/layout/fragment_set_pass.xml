@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_green_trans"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/backBtn"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/backBtn">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start"
+            android:text="Establece tu contraseña"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="5dp"
+            android:text="La contraseña debe incluir letras y números y debe ser igual o mayor a 8 caracteres."
+            app:drawableStartCompat="@drawable/ic_info" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox_height"
+            android:background="@drawable/bg_text_box"
+            android:hint="Contraseña"
+            android:textSize="@dimen/text_normal"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="40dp"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="15dp"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:id="@+id/passBox"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox_height"
+            android:background="@drawable/bg_text_box"
+            android:hint="Confirmar contraseña"
+            android:textSize="@dimen/text_normal"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="15dp"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:id="@+id/confirmPassBox"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:buttonTint="@color/green"
+            android:checked="false"
+            android:layout_marginTop="40dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/textBlue"
+            android:text="@string/pass_checkbox_msg1"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:buttonTint="@color/green"
+            android:checked="false"
+            android:paddingStart="10dp"
+            android:text="Envíame correos sobre ofertas especiales."
+            />
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="150dp"
+        android:layout_height="@dimen/button_height"
+        android:text="Crear cuenta"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:id="@+id/confirmBtn"
+        android:layout_gravity="center"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/bg_green"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

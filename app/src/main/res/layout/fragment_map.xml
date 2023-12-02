@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="20dp"
+        android:hint="Ingresa tu dirección"
+        android:drawablePadding="10dp"
+        android:background="@drawable/bg_text_box"
+        android:drawableStart="@drawable/ic_search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/backBtn"/>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/instrument_regular"
+                android:layout_gravity="start"
+                android:drawablePadding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Your Location"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/instrument_regular"
+                android:layout_gravity="start"
+                android:drawablePadding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Carrera 13 #9-31, Santander de Quilichao"
+                android:gravity="center"
+                app:drawableStartCompat="@drawable/ic_location2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:background="@drawable/bg_green"
+                android:textColor="@color/white"
+                android:fontFamily="@font/instrument_bold_med"
+                android:layout_gravity="start"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="5dp"
+                android:text="Establecer ubicación"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pin_radar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+       />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

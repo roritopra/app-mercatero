@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_things"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_green_circle"
+        android:src="@drawable/resturant_image"
+        android:layout_marginTop="150dp"
+        android:padding="35dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/storeImg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingHorizontal="30dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeImg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gold_play"
+            android:layout_gravity="center"
+            android:text="¡Gracias por tu pedido!"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:fontFamily="@font/instrument_regular"
+            android:layout_gravity="center"
+            android:text="Por favor, califica tu experiencia con Tienda la esquinita"/>
+
+        <RatingBar
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="0"
+            android:id="@+id/ratingBar"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toTopOf="@+id/distance"
+            app:layout_constraintBottom_toBottomOf="@+id/distance"
+            app:layout_constraintEnd_toStartOf="@+id/rating"
+            android:theme="@style/RatingBarYellow" />
+
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/textBox_height"
+        android:background="@drawable/bg_textbox"
+        android:hint="Escribe un comentario"
+        android:textSize="@dimen/text_normal"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_edit"
+        app:layout_constraintBottom_toTopOf="@+id/sendBtn"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:drawablePadding="15dp"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        android:id="@+id/commentBox"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:text="Enviar"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:id="@+id/sendBtn"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/exitBtn"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/bg_green"
+        android:layout_marginBottom="30dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="150dp"
+        android:layout_height="@dimen/button_height"
+        android:text="Saltar"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@color/green"
+        android:textAllCaps="false"
+        android:id="@+id/exitBtn"
+        android:layout_gravity="center"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/bg_white"
+        android:layout_marginBottom="30dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

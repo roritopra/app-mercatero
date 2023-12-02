@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="10dp"
+    android:background="@drawable/bg_white"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_green_lite_circle"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/productImg"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/productImg"
+        android:layout_marginStart="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_bold"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:text="Pedido #90897 "
+            android:id="@+id/orderNo"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_regular"
+            android:textSize="12sp"
+            android:text="Ordenado el 11 de septiembre de 2023"
+            android:id="@+id/date"
+            />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/instrument_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="Items: "
+                    android:id="@+id/titleItems"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/instrument_bold"
+                    android:textSize="12sp"
+                    android:text="5"
+                    android:id="@+id/itemsCount"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/instrument_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="Total: "
+                    android:id="@+id/titleTotal"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/instrument_bold"
+                    android:textSize="12sp"
+                    android:text="$50"
+                    android:id="@+id/total"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="Aceptar"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:id="@+id/acceptBtn"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/bg_green"
+          />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/splashFragment">
+
+    <fragment
+        android:name="fragments.SplashFragment"
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash">
+
+        <action android:id="@+id/nav_to_login"
+            app:destination="@+id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
+
+    <fragment
+        android:name="fragments.LoginFragment"
+        android:id="@+id/loginFragment"
+        tools:layout="@layout/fragment_login">
+
+        <action android:id="@+id/nav_to_user_type"
+            app:destination="@+id/userTypeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+           />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.UserTypeFragment"
+        android:id="@+id/userTypeFragment"
+        tools:layout="@layout/fragment_user_type">
+
+        <action android:id="@+id/nav_to_register"
+            app:destination="@+id/registrationFragment"
+            app:popUpTo="@id/userTypeFragment"
+            app:popUpToInclusive="true"
+            />
+        <action android:id="@+id/nav_to_store_register"
+            app:destination="@+id/storeRegistrationFragment"
+            app:popUpTo="@id/userTypeFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.RegistrationFragment"
+        android:id="@+id/registrationFragment"
+        tools:layout="@layout/fragment_register">
+
+        <action android:id="@+id/nav_to_setup_pass"
+            app:destination="@+id/setUpPassFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.StoreRegistrationFragment"
+        android:id="@+id/storeRegistrationFragment"
+        tools:layout="@layout/fragment_store_register">
+
+        <action android:id="@+id/nav_to_setup_pass"
+            app:destination="@+id/setUpPassFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.SetUpPasswordFragment"
+        android:id="@+id/setUpPassFragment"
+        tools:layout="@layout/fragment_set_pass">
+
+        <action android:id="@+id/nav_to_complete_msg"
+            app:destination="@+id/completeMsgFragment"
+            app:popUpTo="@id/setUpPassFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+    <fragment
+        android:name="fragments.CompletedMsgFragment"
+        android:id="@+id/completeMsgFragment"
+        tools:layout="@layout/fragment_reg_complete">
+
+        <action android:id="@+id/nav_to_dashboard"
+            app:destination="@+id/dashboardFragment"
+            app:popUpTo="@id/completeMsgFragment"
+            app:popUpToInclusive="true"
+            />
+
+        <action android:id="@+id/nav_to_store_dashboard"
+            app:destination="@+id/storeDashboardFragment"
+            app:popUpTo="@id/completeMsgFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.DashboardFragment"
+        android:id="@+id/dashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action android:id="@+id/nav_to_store"
+            app:destination="@+id/storeDetailFragment"
+            />
+        <action android:id="@+id/nav_to_product"
+            app:destination="@+id/productDetailFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.StoreDashboardFragment"
+        android:id="@+id/storeDashboardFragment"
+        tools:layout="@layout/fragment_store_dashboard">
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.StoreDetailFragment"
+        android:id="@+id/storeDetailFragment"
+        tools:layout="@layout/fragment_store_detail">
+
+
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.ProductDetailFragment"
+        android:id="@+id/productDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+
+        <action android:id="@+id/nav_to_cart"
+            app:destination="@+id/cartFragment"
+            />
+
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.CartFragment"
+        android:id="@+id/cartFragment"
+        tools:layout="@layout/fragment_cart">
+
+        <action android:id="@+id/nav_to_confirm"
+            app:destination="@+id/confirmOrderFragment"
+            />
+
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.ConfirmOrderFragment"
+        android:id="@+id/confirmOrderFragment"
+        tools:layout="@layout/fragment_confirm_order">
+
+        <action android:id="@+id/nav_to_complete_msg"
+            app:destination="@+id/completeMsgFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.ProfileFragment"
+        android:id="@+id/profileFragment"
+        tools:layout="@layout/fragment_profile">
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.MyOrdersFragment"
+        android:id="@+id/myOrdersFragment"
+        tools:layout="@layout/fragment_track_order">
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.StoreOrderFragment"
+        android:id="@+id/storeOrderFragment"
+        tools:layout="@layout/fragment_store_orders">
+
+    </fragment>
+
+
+
+
+</navigation>

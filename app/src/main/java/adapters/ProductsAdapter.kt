@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mercatero.app.databinding.ListitemProductBinding
+import icesi.edu.co.mercatero_app.databinding.ListitemProductBinding
 import models.ProductModel
 
 

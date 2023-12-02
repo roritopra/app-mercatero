@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="textGray">#3B3B3B</color>
+    <color name="ashWhite">#f6f6f6</color>
+    <color name="iconGray">#484848</color>
+    <color name="textBlue">#407EC7</color>
+    <color name="green">#6CC51D</color>
+    <color name="greenTrans">#1a6CC51D</color>
+    <color name="greenlite">#E6F9D6</color>
+    <color name="yellow">#FEAD1D</color>
+    <color name="grayLite">#DFDFDF</color>
+
+
+
+
 </resources>

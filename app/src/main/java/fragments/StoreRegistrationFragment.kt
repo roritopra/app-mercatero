@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentStoreDetailBinding
 import icesi.edu.co.mercatero_app.databinding.FragmentStoreRegisterBinding
+import models.UserModel
+import utils.Constants
 
 
 class StoreRegistrationFragment : BaseFragment() {
 
     lateinit var binding: FragmentStoreRegisterBinding
+    lateinit var navController:NavController
 
 
 
@@ -30,16 +36,35 @@ class StoreRegistrationFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStoreRegisterBinding.bind(view)
+        navController=findNavController()
 
-        binding.backBtn.setOnClickListener { findNavController().navigateUp() }
-        binding.signupBtn.setOnClickListener { navigate() }
+        binding.backBtn.setOnClickListener { navController.navigateUp() }
+        binding.signupBtn.setOnClickListener {
+
+            val category=binding.categoryBox.text.toString()
+            val user= UserModel()
+            user.name=binding.nameBox.text.toString()
+            user.email=binding.emailBox.text.toString()
+            user.phone=binding.phoneBox.text.toString()
+            user.userType= Constants.KEY_STORE
+
+            if(user.name.isEmpty()
+                ||user.email.isEmpty()||user.phone.isEmpty()){
+                Toast.makeText(requireContext(),"Todos los campos son obligatorios", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            navController.navigate(RegistrationFragmentDirections.navToSetupPass(user,category))
+        }
+        binding.loginBtn.setOnClickListener {
+            navController.navigate(RegistrationFragmentDirections.navToLogin())
+        }
 
     }
 
 
 
-    private fun navigate(){
-        findNavController().navigate(StoreRegistrationFragmentDirections.navToSetupPass())
-    }
+
 
 }
+

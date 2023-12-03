@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import icesi.edu.co.mercatero_app.R
-import icesi.edu.co.mercatero_app.databinding.FragmentStoreDetailBinding
+import icesi.edu.co.mercatero_app.databinding.FragmentTrackOrderBinding
 
 
-class ToDeliverOrdersFragment : BaseFragment() {
+class TrackLocationFragment : BaseFragment() {
 
-    lateinit var binding: FragmentStoreDetailBinding
+    lateinit var binding: FragmentTrackOrderBinding
 
 
 
@@ -23,22 +24,22 @@ class ToDeliverOrdersFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_store_detail, container, false)
+        return inflater.inflate(R.layout.fragment_track_order, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentStoreDetailBinding.bind(view)
+        binding = FragmentTrackOrderBinding.bind(view)
 
-
-
+        binding.storeView.setOnClickListener { navigate() }
+        binding.backBtn.setOnClickListener { navigate() }
 
     }
 
 
 
     private fun navigate(){
-        //findNavController().navigate(FragmentUserTypeDirections.navToRegister())
+        findNavController().navigate(TrackLocationFragmentDirections.navToStore(null))
     }
 
 }

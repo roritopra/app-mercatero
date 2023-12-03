@@ -2,15 +2,12 @@ package fragments
 
 
 import adapters.StoreOrdersAdapter
-import adapters.StoresAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentStoreOrdersBinding
-import models.StoreModel
-import models.StoreOrderModel
 
 
 class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {

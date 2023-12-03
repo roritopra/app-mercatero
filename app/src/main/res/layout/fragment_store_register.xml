@@ -49,19 +49,19 @@
             android:background="@drawable/bg_text_box"
             android:hint="Nombre de la tienda o restaurante"
             android:imeOptions="actionNext"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:paddingHorizontal="15dp"
             android:textSize="@dimen/text_normal" />
 
         <EditText
-            android:id="@+id/surnameBox"
+            android:id="@+id/categoryBox"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textBox_height"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_box"
-            android:hint="Dirección del establecimiento"
+            android:hint="categoría"
             android:imeOptions="actionNext"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:paddingHorizontal="15dp"
             android:textSize="@dimen/text_normal" />
 
@@ -112,6 +112,15 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_normal" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Ya tienes una cuenta?"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/textBlue"
+            android:id="@+id/loginBtn"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
 
     </LinearLayout>
 

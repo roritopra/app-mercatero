@@ -9,8 +9,8 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentUserTypeBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentUserTypeBinding
 import utils.AppPreferences.setUserType
 import utils.Constants.KEY_CONSUMER
 import utils.Constants.KEY_DRIVER

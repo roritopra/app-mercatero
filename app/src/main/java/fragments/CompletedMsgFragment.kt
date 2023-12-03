@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentRegCompleteBinding
-import com.mercatero.app.databinding.FragmentRegisterBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentRegCompleteBinding
 import utils.AppPreferences.getUserType
 import utils.Constants
 
@@ -44,7 +43,7 @@ class CompletedMsgFragment : BaseFragment() {
 
 
     private fun navigate(){
-        if(context?.getUserType()== Constants.KEY_CUSTOMER) {
+        if(context?.getUserType()== Constants.KEY_CONSUMER) {
             navController.navigate(CompletedMsgFragmentDirections.navToDashboard())
         }
         else if(context?.getUserType()== Constants.KEY_STORE) {

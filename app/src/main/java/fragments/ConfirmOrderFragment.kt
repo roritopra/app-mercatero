@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentConfirmOrderBinding
-import com.mercatero.app.databinding.FragmentStoreDetailBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentConfirmOrderBinding
 
 
 class ConfirmOrderFragment : BaseFragment() {

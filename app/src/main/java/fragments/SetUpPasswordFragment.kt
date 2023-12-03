@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentLoginBinding
-import com.mercatero.app.databinding.FragmentRegisterBinding
-import com.mercatero.app.databinding.FragmentSetPassBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentSetPassBinding
 
 
 class SetUpPasswordFragment : BaseFragment() {

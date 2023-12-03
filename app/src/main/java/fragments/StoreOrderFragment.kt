@@ -2,32 +2,26 @@ package fragments
 
 
 import adapters.StoreOrdersAdapter
+import adapters.StoresAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentStoreOrdersBinding
-import models.OrderModel
-import utils.AppPreferences.getUserId
-import utils.Constants
-import utils.Constants.COLLECTION_ORDERS
-import utils.Constants.KEY_ORDER
-import utils.Constants.KEY_TAB_POSITION
-import utils.OrderStatus
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentStoreOrdersBinding
+import models.StoreModel
+import models.StoreOrderModel
 
 
 class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
 
     lateinit var binding: FragmentStoreOrdersBinding
-    lateinit var db: FirebaseFirestore
-    val ordersList= mutableListOf<OrderModel>()
-    lateinit var status: OrderStatus
-    lateinit var adapter: StoreOrdersAdapter
 
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,64 +33,34 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStoreOrdersBinding.bind(view)
-        db= FirebaseFirestore.getInstance()
-
-         status=when(arguments?.getInt(KEY_TAB_POSITION)){
-            0->OrderStatus.PENDING
-            1->OrderStatus.PROCESSING
-            else->OrderStatus.READY
-        }
 
 
-        context?.getUserId()?.let { getOrders(it,status.name) }
+        showOrders()
 
 
     }
 
 
-    private fun getOrders(id:String,status:String){
+    private fun showOrders(){
 
-        ordersList.clear()
-        var query: Query = db.collection(Constants.COLLECTION_ORDERS)
-
-        query = query.whereEqualTo("storeId",id)
-        query = query.whereEqualTo("status",status)
-        query.get().addOnSuccessListener {
-            it.documents.forEach {
-                val order = it.toObject(OrderModel::class.java)
-                if (order != null) {
-                    ordersList.add(order)
-                }
-            }
-
-            adapter=StoreOrdersAdapter(this,ordersList)
-            binding.ordersRV.adapter=adapter
-
-        }.addOnFailureListener {
-            Log.v("Profile",it.message.toString())
+        val list= mutableListOf<StoreOrderModel>()
+        for(i in 1..5){
+            val order= StoreOrderModel()
+            list.add(order)
         }
+
+        val adapter= StoreOrdersAdapter(this,list)
+        binding.ordersRV.adapter=adapter
+    }
+
+
+    private fun navigate(){
+        //findNavController().navigate(FragmentUserTypeDirections.navToRegister())
     }
 
     override fun onOrderItemClick(position: Int) {
 
-        val orderId=ordersList[position].orderId
-        val newStatus=when(status){
-            OrderStatus.PENDING->OrderStatus.PROCESSING
-            OrderStatus.PROCESSING->OrderStatus.READY
-            else->null
-        }
 
-        if(newStatus!=null) {
-            val updates: MutableMap<String, Any> = HashMap()
-            updates["status"] = newStatus.name
-            db.collection(COLLECTION_ORDERS).document(orderId).update(updates).addOnSuccessListener {
-                ordersList.removeAt(position)
-                adapter.notifyItemRemoved(position)
-
-            }
-        }
     }
 
-
 }
-

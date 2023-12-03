@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_things"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_green_trans"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/backBtn"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/instrument_bold"
+        android:layout_gravity="start"
+        android:text="Editar mis datos"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start"
+            android:text="Nombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+
+        <EditText
+            android:id="@+id/nameBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox_height"
+            android:background="@drawable/bg_text_box"
+            android:hint="Nombre"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textSize="@dimen/text_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start"
+            android:text="Apellidos"
+            android:visibility="gone"
+            android:id="@+id/surNameTitle"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+        <EditText
+            android:id="@+id/surnameBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox_height"
+            android:background="@drawable/bg_text_box"
+            android:hint="Apellidos"
+            android:visibility="gone"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:textSize="@dimen/text_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start"
+            android:text="Descripción"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+
+        <EditText
+            android:id="@+id/desBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox_height"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_box"
+            android:hint="Descripción"
+            android:imeOptions="actionNext"
+            android:inputType="textPostalAddress"
+            android:paddingHorizontal="15dp"
+            android:textSize="@dimen/text_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="start|center"
+            android:text="Foto de perfil"
+            android:layout_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:id="@+id/photoBtn"
+            android:background="@drawable/bg_white"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/green"
+            android:fontFamily="@font/instrument_bold"
+            android:layout_gravity="end|center"
+            android:text="Foto de perfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/instrument_regular"
+            android:layout_gravity="end|center"
+            android:text=""
+            android:id="@+id/selectedFile"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/okBtn"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_green"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Guardar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/textBlue"
+            android:id="@+id/cancelBtn"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

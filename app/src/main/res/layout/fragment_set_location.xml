@@ -84,6 +84,7 @@
                     android:layout_height="50dp"
                     android:textSize="16sp"
                     android:gravity="center"
+                    android:id="@+id/okBtn"
                     android:background="@drawable/bg_ashwhite"
                     android:textColor="@color/green"
                     android:fontFamily="@font/instrument_bold_med"

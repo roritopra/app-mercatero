@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import icesi.edu.co.mercatero_app.databinding.ListitemStoreOrderBinding
-import models.StoreOrderModel
 
 
 class StoreOrdersAdapter(private val mClickListener: OnClickListener, private val items: List<StoreOrderModel>) :

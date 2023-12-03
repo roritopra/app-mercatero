@@ -19,6 +19,14 @@ object AppPreferences {
         prefObj(this).edit().putString("UserType", value).apply()
     }
 
+    fun Context.getUserId(): String {
+        return prefObj(this).getString("UserId", "").toString()
+    }
+
+    fun Context.setUserId(value: String) {
+        prefObj(this).edit().putString("UserId", value).apply()
+    }
+
 
 
 

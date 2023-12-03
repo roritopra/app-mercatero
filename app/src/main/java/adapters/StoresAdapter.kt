@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import icesi.edu.co.mercatero_app.databinding.ListitemStoreBinding
 import models.StoreModel
 
@@ -33,8 +34,13 @@ class StoresAdapter(private val mClickListener: OnClickListener, private val ite
     @SuppressLint("SetTextI18n", "MissingPermission")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val item=items[position]
-        //holder.binding.title.text = item.name.toString()
-        //holder.binding.icon.setImageResource(item.icon)
+        holder.binding.title.text = item.name.toString()
+        holder.binding.time.text=item.distance
+        holder.itemView.let { it1 ->
+            if (item.img.isNotEmpty()) {
+                Glide.with(it1).load(item.img).into(holder.binding.image)
+            }
+        }
     }
 
     override fun getItemCount(): Int {

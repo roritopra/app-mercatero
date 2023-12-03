@@ -2,14 +2,10 @@ package icesi.edu.co.mercatero_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import icesi.edu.co.mercatero_app.databinding.ActivityMainBinding
 import utils.AppPreferences.getUserType

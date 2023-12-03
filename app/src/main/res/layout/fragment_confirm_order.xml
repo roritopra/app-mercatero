@@ -141,7 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="Efectivo"
                 android:gravity="center"
-                android:id="@+id/pymtMethod"
+                android:id="@+id/cash"
                />
             <TextView
                 android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/pymMethodTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="$34.5"
+                android:text="$0"
                 android:gravity="center"
                 android:id="@+id/pymtMethodPrice"
                 />

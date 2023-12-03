@@ -13,9 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentDashboardBinding
-import com.mercatero.app.databinding.FragmentLoginBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentDashboardBinding
 import models.CatgsModel
 import models.ProductModel
 import models.StoreModel

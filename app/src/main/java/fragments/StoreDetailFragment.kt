@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import icesi.edu.co.mercatero_app.R
-import icesi.edu.co.mercatero_app.databinding.FragmentProductDetailBinding
+import icesi.edu.co.mercatero_app.databinding.FragmentStoreDetailBinding
 
 
-class ProductDetailFragment : BaseFragment() {
+class StoreDetailFragment : BaseFragment() {
 
-    lateinit var binding: FragmentProductDetailBinding
+    lateinit var binding: FragmentStoreDetailBinding
 
 
 
@@ -24,23 +24,22 @@ class ProductDetailFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_product_detail, container, false)
+        return inflater.inflate(R.layout.fragment_store_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentProductDetailBinding.bind(view)
+        binding = FragmentStoreDetailBinding.bind(view)
 
         binding.backBtn.setOnClickListener { findNavController().navigateUp() }
-        binding.confirmBtn.setOnClickListener { navigate() }
+
 
     }
 
 
 
     private fun navigate(){
-        findNavController().navigate(ProductDetailFragmentDirections.navToCart())
+        //findNavController().navigate(FragmentUserTypeDirections.navToRegister())
     }
 
 }
-

@@ -2,6 +2,7 @@ package fragments
 
 
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,38 +11,36 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import icesi.edu.co.mercatero_app.R
-import icesi.edu.co.mercatero_app.databinding.FragmentLoginBinding
+import icesi.edu.co.mercatero_app.databinding.FragmentSplashBinding
+import java.util.logging.Handler
 
 
-class LoginFragment : BaseFragment() {
+class SplashFragment : BaseFragment() {
 
-    lateinit var binding: FragmentLoginBinding
+    lateinit var binding: FragmentSplashBinding
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentLoginBinding.bind(view)
+        binding = FragmentSplashBinding.bind(view)
 
-        binding.loginBtn.setOnClickListener { navigate() }
+        android.os.Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            navigateToLogin()
+        },3000)
 
     }
 
 
 
-    private fun navigate(){
-        findNavController().navigate(LoginFragmentDirections.navToUserType())
+    private fun navigateToLogin(){
+        findNavController().navigate(SplashFragmentDirections.navToLogin())
     }
 
 }

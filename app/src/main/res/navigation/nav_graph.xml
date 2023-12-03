@@ -212,7 +212,6 @@
             app:destination="@+id/productDetailFragment"
             />
 
-
     </fragment>
 
     <fragment
@@ -254,6 +253,7 @@
             app:popUpTo="@id/productDetailFragment"
             app:popUpToInclusive="true"
             />
+
 
     </fragment>
 

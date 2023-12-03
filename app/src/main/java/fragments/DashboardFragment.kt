@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentDashboardBinding
 import models.CatgsModel
@@ -26,8 +27,11 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
 
     lateinit var binding: FragmentDashboardBinding
     lateinit var navController: NavController
+    lateinit var db: FirebaseFirestore
 
-
+    val catgsList= mutableListOf<CatgsModel>()
+    val productsList= mutableListOf<ProductModel>()
+    val storesList= mutableListOf<StoreModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,16 +48,15 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDashboardBinding.bind(view)
         navController=findNavController()
+        db= FirebaseFirestore.getInstance()
         showCatgs()
-        showStores()
-        showProdcuts()
+
 
 
     }
 
     private fun showCatgs(){
 
-        val catgsList= mutableListOf<CatgsModel>()
         Constants.catgs.forEachIndexed {index,item->
             val catg=CatgsModel()
 
@@ -66,44 +69,57 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
         val adapter=CatgsAdapter(this,catgsList)
         binding.catgsRV.adapter=adapter
 
+        showStores(catgsList[0].name)
+
     }
 
-    private fun showStores(){
+    private fun showStores(store:String){
 
-        val storesList= mutableListOf<StoreModel>()
-        for(i in 1..5){
-            val store=StoreModel()
-            storesList.add(store)
+        productsList.clear()
+        storesList.clear()
+
+
+        db.collection(Constants.COLLECTION_STORES).whereEqualTo("category",store).get().addOnSuccessListener {
+            it.documents.forEach {
+                val store = it?.toObject(StoreModel::class.java)
+                store?.products?.forEach {
+                    productsList.add(it)
+                }
+                if (store != null) {
+                    storesList.add(store)
+                }
+            }
+
+            val adapter=StoresAdapter(this,storesList)
+            binding.storesRV.adapter=adapter
+
+            val prdAdapter=ProductsAdapter(this,productsList,ITEM_HORIZONTAL)
+            binding.productsRV.adapter=prdAdapter
+
+        }.addOnFailureListener {
+            Log.v("Profile",it.message.toString())
         }
 
-        val adapter=StoresAdapter(this,storesList)
-        binding.storesRV.adapter=adapter
+
+
     }
 
-    private fun showProdcuts(){
 
-        val productsList= mutableListOf<ProductModel>()
-        for(i in 1..5){
-            val item=ProductModel()
-            productsList.add(item)
-        }
-
-        val adapter=ProductsAdapter(this,productsList)
-        binding.productsRV.adapter=adapter
-    }
 
 
 
     override fun onStoreItemClick(position: Int) {
-        navController.navigate(DashboardFragmentDirections.navToStore())
+        val store=storesList[position]
+        navController.navigate(DashboardFragmentDirections.navToStore(store))
     }
 
-    override fun onClick(position: Int) {
-
+    override fun onCategoryClick(position: Int) {
+        showStores(catgsList[position].name)
     }
 
     override fun onProductClick(position: Int) {
-        navController.navigate(DashboardFragmentDirections.navToProduct())
+        val product=productsList[position]
+        navController.navigate(DashboardFragmentDirections.navToProduct(product))
     }
 
 }

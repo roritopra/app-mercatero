@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import icesi.edu.co.mercatero_app.databinding.ListitemStoreOrderBinding
+import io.grpc.LoadBalancer.Helper
+import models.OrderModel
+import utils.OrderStatus
 
 
-class StoreOrdersAdapter(private val mClickListener: OnClickListener, private val items: List<StoreOrderModel>) :
+class StoreOrdersAdapter(private val mClickListener: OnClickListener, private val items: List<OrderModel>) :
     RecyclerView.Adapter<StoreOrdersAdapter.ItemHolder>() {
 
 
@@ -15,7 +19,7 @@ class StoreOrdersAdapter(private val mClickListener: OnClickListener, private va
         var binding: ListitemStoreOrderBinding
         init {
             this.binding = binding
-            itemView.setOnClickListener { mClickListener.onOrderItemClick(adapterPosition) }
+            binding.acceptBtn.setOnClickListener { mClickListener.onOrderItemClick(adapterPosition) }
         }
     }
 
@@ -32,8 +36,19 @@ class StoreOrdersAdapter(private val mClickListener: OnClickListener, private va
     @SuppressLint("SetTextI18n", "MissingPermission")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val item=items[position]
-        //holder.binding.title.text = item.name.toString()
-        //holder.binding.icon.setImageResource(item.icon)
+        holder.binding.orderNo.text = "Pedido #${item.orderId}"
+        holder.binding.itemsCount.text = item.items.toString()
+        holder.binding.date.text = utils.Helper.formatDateTime(item.date.time)
+        holder.binding.itemsCount.text = "$${item.total.toString()}"
+
+        val acceptBtnTxt=when(item.status){
+            OrderStatus.PENDING.name-> "Aceptar"
+            OrderStatus.PROCESSING.name-> "Pedido listo"
+            else->"Entregar pedido"
+        }
+
+        holder.binding.acceptBtn.text = acceptBtnTxt
+
     }
 
     override fun getItemCount(): Int {

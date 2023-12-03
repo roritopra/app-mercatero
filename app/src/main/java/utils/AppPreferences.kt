@@ -23,11 +23,10 @@ object AppPreferences {
         return prefObj(this).getString("UserId", "").toString()
     }
 
+
     fun Context.setUserId(value: String) {
         prefObj(this).edit().putString("UserId", value).apply()
     }
-
-
 
 
 

@@ -26,9 +26,17 @@
 
         <action android:id="@+id/nav_to_user_type"
             app:destination="@+id/userTypeFragment"
+            />
+        <action android:id="@+id/nav_to_dashboard"
+            app:destination="@+id/dashboardFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
-           />
+            />
+        <action android:id="@+id/nav_to_store_dashboard"
+            app:destination="@+id/storeDashboardFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            />
 
     </fragment>
 
@@ -39,13 +47,9 @@
 
         <action android:id="@+id/nav_to_register"
             app:destination="@+id/registrationFragment"
-            app:popUpTo="@id/userTypeFragment"
-            app:popUpToInclusive="true"
             />
         <action android:id="@+id/nav_to_store_register"
             app:destination="@+id/storeRegistrationFragment"
-            app:popUpTo="@id/userTypeFragment"
-            app:popUpToInclusive="true"
             />
 
     </fragment>
@@ -57,6 +61,11 @@
 
         <action android:id="@+id/nav_to_setup_pass"
             app:destination="@+id/setUpPassFragment"
+            />
+        <action android:id="@+id/nav_to_login"
+            app:destination="@+id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
             />
 
     </fragment>
@@ -70,6 +79,12 @@
             app:destination="@+id/setUpPassFragment"
             />
 
+        <action android:id="@+id/nav_to_login"
+            app:destination="@+id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            />
+
     </fragment>
 
     <fragment
@@ -77,9 +92,18 @@
         android:id="@+id/setUpPassFragment"
         tools:layout="@layout/fragment_set_pass">
 
+        <argument
+            android:name="user"
+            app:argType="models.UserModel" />
+
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="null"/>
+
         <action android:id="@+id/nav_to_complete_msg"
             app:destination="@+id/completeMsgFragment"
-            app:popUpTo="@id/setUpPassFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             />
 
@@ -87,17 +111,68 @@
     <fragment
         android:name="fragments.CompletedMsgFragment"
         android:id="@+id/completeMsgFragment"
-        tools:layout="@layout/fragment_reg_complete">
+        tools:layout="@layout/fragment_completed_msg">
+
+        <action android:id="@+id/nav_to_set_location"
+            app:destination="@+id/setUpLocationFragment"
+            app:popUpTo="@id/completeMsgFragment"
+            app:popUpToInclusive="true"
+            />
+
+        <action android:id="@+id/nav_to_track_order"
+            app:destination="@+id/trackOrderFragment"
+            app:popUpTo="@id/completeMsgFragment"
+            app:popUpToInclusive="true"
+            />
+
+        <argument
+            android:name="msgType"
+            app:argType="string"
+            android:defaultValue="null"/>
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.SetUpLocationFragment"
+        android:id="@+id/setUpLocationFragment"
+        tools:layout="@layout/fragment_set_location">
+
+        <action android:id="@+id/nav_to_map"
+            app:destination="@+id/mapFragment"
+            />
+
+
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.MapFragment"
+        android:id="@+id/mapFragment"
+        tools:layout="@layout/fragment_set_location">
 
         <action android:id="@+id/nav_to_dashboard"
             app:destination="@+id/dashboardFragment"
-            app:popUpTo="@id/completeMsgFragment"
+            app:popUpTo="@id/setUpLocationFragment"
             app:popUpToInclusive="true"
             />
 
         <action android:id="@+id/nav_to_store_dashboard"
             app:destination="@+id/storeDashboardFragment"
-            app:popUpTo="@id/completeMsgFragment"
+            app:popUpTo="@id/setUpLocationFragment"
+            app:popUpToInclusive="true"
+            />
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.TrackLocationFragment"
+        android:id="@+id/trackOrderFragment"
+        tools:layout="@layout/fragment_track_order">
+
+        <action android:id="@+id/nav_to_store"
+            app:destination="@+id/storeDetailFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/trackOrderFragment"
             app:popUpToInclusive="true"
             />
 
@@ -129,7 +204,13 @@
         android:id="@+id/storeDetailFragment"
         tools:layout="@layout/fragment_store_detail">
 
+        <argument
+            android:name="store"
+            app:argType="models.StoreModel" />
 
+        <action android:id="@+id/nav_to_product"
+            app:destination="@+id/productDetailFragment"
+            />
 
     </fragment>
 
@@ -137,6 +218,10 @@
         android:name="fragments.ProductDetailFragment"
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/fragment_product_detail">
+
+        <argument
+            android:name="product"
+            app:argType="models.ProductModel" />
 
         <action android:id="@+id/nav_to_cart"
             app:destination="@+id/cartFragment"
@@ -164,7 +249,10 @@
 
         <action android:id="@+id/nav_to_complete_msg"
             app:destination="@+id/completeMsgFragment"
+            app:popUpTo="@id/productDetailFragment"
+            app:popUpToInclusive="true"
             />
+
 
     </fragment>
 
@@ -172,6 +260,28 @@
         android:name="fragments.ProfileFragment"
         android:id="@+id/profileFragment"
         tools:layout="@layout/fragment_profile">
+
+        <action android:id="@+id/nav_to_login"
+            app:destination="@+id/loginFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true"
+            />
+
+        <action android:id="@+id/nav_to_edit"
+            app:destination="@+id/profileEditFragment"
+            />
+
+
+    </fragment>
+
+    <fragment
+        android:name="fragments.ProfileEditFragment"
+        android:id="@+id/profileEditFragment"
+        tools:layout="@layout/fragment_profile_edit">
+
+        <argument
+            android:name="user"
+            app:argType="models.UserModel" />
 
     </fragment>
 

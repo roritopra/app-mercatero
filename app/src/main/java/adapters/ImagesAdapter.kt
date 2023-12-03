@@ -4,26 +4,25 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import icesi.edu.co.mercatero_app.databinding.ListitemCatgsBinding
-import models.CatgsModel
+import com.bumptech.glide.Glide
+import icesi.edu.co.mercatero_app.databinding.ListItemImageBinding
 
 
-class CatgsAdapter(private val mClickListener: OnClickListener, private val items: List<CatgsModel>) :
-    RecyclerView.Adapter<CatgsAdapter.ItemHolder>() {
+class ImagesAdapter(private val items: List<String>) :
+    RecyclerView.Adapter<ImagesAdapter.ItemHolder>() {
 
 
-    inner class ItemHolder(binding: ListitemCatgsBinding) : RecyclerView.ViewHolder(binding.root) {
-        var binding: ListitemCatgsBinding
+    inner class ItemHolder(binding: ListItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
+        var binding: ListItemImageBinding
         init {
             this.binding = binding
-            itemView.setOnClickListener { mClickListener.onCategoryClick(adapterPosition) }
         }
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         return ItemHolder(
-            ListitemCatgsBinding.inflate(
+            ListItemImageBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
@@ -33,8 +32,8 @@ class CatgsAdapter(private val mClickListener: OnClickListener, private val item
     @SuppressLint("SetTextI18n", "MissingPermission")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val item=items[position]
-        holder.binding.title.text = item.name.toString()
-        holder.binding.icon.setImageResource(item.icon)
+        Glide.with(holder.itemView).load(item).into(holder.binding.imageView)
+
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +45,4 @@ class CatgsAdapter(private val mClickListener: OnClickListener, private val item
     }
 
 
-    interface OnClickListener{
-        fun onCategoryClick(position: Int)
-    }
 }

@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingVertical="10dp"
                 android:paddingHorizontal="10dp"
                 app:layout_constraintTop_toTopOf="parent">
                 <TextView
@@ -59,7 +58,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_gravity="start"
                     android:drawablePadding="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Rastrea tu orden"
                     android:gravity="center"
                     android:id="@+id/title"
@@ -67,7 +66,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/bg_white"
                     app:layout_constraintTop_toBottomOf="@+id/title"
@@ -126,6 +125,8 @@
                     android:background="@drawable/bg_white"
                     android:id="@+id/phoneBtn"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/chatBtn"
                     app:layout_constraintTop_toBottomOf="@+id/storeView">
@@ -154,6 +155,7 @@
                     android:src="@drawable/ic_chat"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/phoneBtn"
+                    app:layout_constraintBottom_toBottomOf="@+id/phoneBtn"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:background="@drawable/bg_green"
                     />

@@ -44,6 +44,7 @@ class StoreDashboardFragment : BaseFragment(){
             }
         }.attach()
 
+    }
 
     }
 

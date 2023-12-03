@@ -48,6 +48,7 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:id="@+id/msg"
             android:fontFamily="@font/instrument_bold"
             android:layout_gravity="center"
             android:text="Su perfil está listo para usar"/>

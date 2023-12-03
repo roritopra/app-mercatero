@@ -3,15 +3,15 @@ package models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class StoreModel(
+data class UserModel(
     var id: String="",
     var name: String="",
-    var distance: String="",
+    var surName: String="",
+    var email: String="",
+    var phone: String="",
     var des: String="",
-    var rating: Float=0f,
+    var userType: String="",
     var img: String="",
-    var category: String="",
-    var products: MutableList<ProductModel> = mutableListOf<ProductModel>(),
     var orders: MutableList<OrderModel> = mutableListOf<OrderModel>()
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -19,36 +19,38 @@ data class StoreModel(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readString().toString().toFloat(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.createTypedArrayList(ProductModel.CREATOR)?.toMutableList()!!,
+        parcel.readString().toString(),
+        parcel.readString().toString(),
         parcel.createTypedArrayList(OrderModel.CREATOR)?.toMutableList()!!,
     ) {
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    override fun writeToParcel(parcel: Parcel, p1: Int) {
         parcel.writeString(id)
         parcel.writeString(name)
-        parcel.writeString(distance)
+        parcel.writeString(surName)
+        parcel.writeString(email)
+        parcel.writeString(phone)
         parcel.writeString(des)
-        parcel.writeFloat(rating)
+        parcel.writeString(userType)
         parcel.writeString(img)
-        parcel.writeString(category)
-        parcel.writeTypedList(products)
         parcel.writeTypedList(orders)
+
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<StoreModel> {
-        override fun createFromParcel(parcel: Parcel): StoreModel {
-            return StoreModel(parcel)
+    companion object CREATOR : Parcelable.Creator<UserModel> {
+        override fun createFromParcel(parcel: Parcel): UserModel {
+            return UserModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<StoreModel?> {
+        override fun newArray(size: Int): Array<UserModel?> {
             return arrayOfNulls(size)
         }
     }

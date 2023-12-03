@@ -1,12 +1,24 @@
 package utils
 
-import com.mercatero.app.R
+import icesi.edu.co.mercatero_app.R
 
 object Constants {
 
-     const val KEY_STORE="Store"
-    const val KEY_DRIVER="Driver"
-    const val KEY_CUSTOMER="Customer"
+    const val KEY_STORE="Tienda"
+    const val KEY_DRIVER="Repartidor"
+    const val KEY_CONSUMER="Consumidor"
+    const val KEY_REGISTRATION="Registration"
+    const val KEY_ORDER="Order"
+    const val KEY_IMAGES="Images"
+
+    const val COLLECTION_USERS="Users"
+    const val COLLECTION_ORDERS="Orders"
+    const val COLLECTION_STORES="Stores"
+
+    val dateFormat = "MMM dd, yyyy"
+    const val ITEM_VERTICAL=0
+    const val ITEM_HORIZONTAL=1
+    const val KEY_TAB_POSITION="tabPosition"
 
     val catgs= listOf("Restaurante","Mercados","Farmacia","Ferretería",
         "Mascotas","Ropa","Hogar","Licor","Papelería","Belleza")

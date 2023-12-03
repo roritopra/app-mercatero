@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentLoginBinding
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentLoginBinding
 
 
 class LoginFragment : BaseFragment() {

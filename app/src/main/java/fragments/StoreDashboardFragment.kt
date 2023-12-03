@@ -8,17 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.mercatero.app.R
-import com.mercatero.app.databinding.FragmentStoreDashboardBinding
-import models.OrderModel
-import models.ProductModel
-import models.UserModel
-import utils.Constants
+import icesi.edu.co.mercatero_app.R
+import icesi.edu.co.mercatero_app.databinding.FragmentStoreDashboardBinding
+
 
 
 class StoreDashboardFragment : BaseFragment(){

@@ -10,7 +10,7 @@ data class OrderModel(
     var userId: String="",
     var date: Date =Date(),
     var status: String="",
-    var img: String="",
+    var images: MutableList<String> = mutableListOf<String>(),
     var total: Double=0.0,
     var items: Int=0
 ):Parcelable {
@@ -20,7 +20,7 @@ data class OrderModel(
         parcel.readString().toString(),
         Date(parcel.readLong()),
         parcel.readString().toString(),
-        parcel.readString().toString(),
+        parcel.createStringArrayList()?.toMutableList()!!,
         parcel.readDouble().toDouble(),
         parcel.readInt()
     ) {
@@ -32,7 +32,7 @@ data class OrderModel(
         parcel.writeString(userId)
         parcel.writeLong(date.time)
         parcel.writeString(status)
-        parcel.writeString(img)
+        parcel.writeStringList(images)
         parcel.writeDouble(total)
         parcel.writeInt(items)
     }

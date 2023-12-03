@@ -204,13 +204,11 @@
         android:id="@+id/storeDetailFragment"
         tools:layout="@layout/fragment_store_detail">
 
-        <argument
-            android:name="store"
-            app:argType="models.StoreModel" />
 
         <action android:id="@+id/nav_to_product"
             app:destination="@+id/productDetailFragment"
             />
+
 
     </fragment>
 
@@ -253,7 +251,6 @@
             app:popUpTo="@id/productDetailFragment"
             app:popUpToInclusive="true"
             />
-
 
     </fragment>
 

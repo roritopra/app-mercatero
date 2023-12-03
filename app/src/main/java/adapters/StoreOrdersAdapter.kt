@@ -41,6 +41,10 @@ class StoreOrdersAdapter(private val mClickListener: OnClickListener, private va
         holder.binding.date.text = utils.Helper.formatDateTime(item.date.time)
         holder.binding.itemsCount.text = "$${item.total.toString()}"
 
+        if (item.images.isNotEmpty()) {
+            Glide.with(holder.itemView).load(item.images[0]).into(holder.binding.productImg)
+        }
+
         val acceptBtnTxt=when(item.status){
             OrderStatus.PENDING.name-> "Aceptar"
             OrderStatus.PROCESSING.name-> "Pedido listo"

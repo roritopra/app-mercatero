@@ -13,6 +13,7 @@ import icesi.edu.co.mercatero_app.databinding.FragmentConfirmOrderBinding
 import icesi.edu.co.mercatero_app.databinding.FragmentStoreDetailBinding
 import models.OrderModel
 import models.ProductModel
+import utils.AppPreferences.getUserId
 import utils.Constants.COLLECTION_ORDERS
 import utils.Constants.KEY_ORDER
 import utils.OrderStatus
@@ -44,6 +45,7 @@ class ConfirmOrderFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentConfirmOrderBinding.bind(view)
 
+        db= FirebaseFirestore.getInstance()
         productsList.addAll(sharedViewModel.productsList)
 
         productsByStores=productsList.groupBy { it.storeId }
@@ -63,11 +65,17 @@ class ConfirmOrderFragment : BaseFragment() {
         binding.backBtn.setOnClickListener { findNavController().navigateUp() }
         binding.confirBtn.setOnClickListener {
 
-            var total=0.0
-            var totalCounts=0
+
             productsByStores.values.forEachIndexed {index,products->
+                var total=0.0
+                var totalCounts=0
                 val storeId=products[0].storeId
+                val images= mutableListOf<String>()
                 products.forEach {
+                    if(it.images.isNotEmpty()){
+                        images.add(it.images[0])
+                }
+
                     total += it.price * it.counts
                     totalCounts+=it.counts
                 }
@@ -75,13 +83,18 @@ class ConfirmOrderFragment : BaseFragment() {
                 val order=OrderModel()
                 order.total=total
                 order.date= Date()
+                order.images=images
                 order.items=totalCounts
-                order.status=OrderStatus.PENDING.name
+                order.status=OrderStatus.PENDING.Name
                 order.storeId=storeId
+                order.userId=requireContext().getUserId()
+
 
                 val document=db.collection(COLLECTION_ORDERS).document()
                 order.orderId=document.id
                 document.set(order).addOnSuccessListener {
+                    sharedViewModel.productsList.clear()
+                    sharedViewModel.total=0.0
                     if(index==productsByStores.size-1){
                         navigate()
                     }

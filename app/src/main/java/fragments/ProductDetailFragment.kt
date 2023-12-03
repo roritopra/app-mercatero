@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentProductDetailBinding
 import models.ProductModel
+import viewmodels.SharedViewModel
 
 
 class ProductDetailFragment : BaseFragment() {
@@ -49,7 +53,7 @@ class ProductDetailFragment : BaseFragment() {
         binding.rating.text="${product.rating.toString()} calificación"
         binding.ratingBar.rating=product.rating
 
-        val adapter= ImagesAdapter(product.imgs)
+        val adapter=ImagesAdapter(product.images)
         binding.viewPager.adapter=adapter
         binding.dotsIndicator.attachTo(binding.viewPager)
 
@@ -68,7 +72,11 @@ class ProductDetailFragment : BaseFragment() {
         }
 
         binding.confirmBtn.setOnClickListener {
-            navigate(product)
+            if(itemCounts>0) {
+                navigate(product)
+            }else{
+                Toast.makeText(requireContext(),"agregar elementos",Toast.LENGTH_LONG).show()
+            }
         }
 
     }

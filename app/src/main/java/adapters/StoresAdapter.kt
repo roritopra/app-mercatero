@@ -37,8 +37,8 @@ class StoresAdapter(private val mClickListener: OnClickListener, private val ite
         holder.binding.title.text = item.name.toString()
         holder.binding.time.text=item.distance
         holder.itemView.let { it1 ->
-            if (item.img.isNotEmpty()) {
-                Glide.with(it1).load(item.img).into(holder.binding.image)
+            if (item.images.isNotEmpty()) {
+                Glide.with(it1).load(item.images[0]).into(holder.binding.image)
             }
         }
     }

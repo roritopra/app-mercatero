@@ -39,7 +39,7 @@ class TrackLocationFragment : BaseFragment() {
 
 
     private fun navigate(){
-        findNavController().navigate(TrackLocationFragmentDirections.navToStore(null))
+        findNavController().navigate(TrackLocationFragmentDirections.navToStore())
     }
 
 }

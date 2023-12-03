@@ -33,6 +33,7 @@ class StoreDashboardFragment : BaseFragment(){
 
         adapter= TabsAdapter(this)
         binding.viewpager.adapter=adapter
+        binding.viewpager.offscreenPageLimit=1
 
 
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->

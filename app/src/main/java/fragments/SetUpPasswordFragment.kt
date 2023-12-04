@@ -83,6 +83,7 @@ class SetUpPasswordFragment : BaseFragment() {
             if(context?.getUserType()== KEY_STORE) {
                 val store=StoreModel()
                 store.id=id
+                store.des=""
                 store.name=args.user.name
                 store.category=args.category
                 store.distance="10"

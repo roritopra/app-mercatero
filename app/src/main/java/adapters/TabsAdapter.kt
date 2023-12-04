@@ -3,6 +3,8 @@ package adapters
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import fragments.PendingOrdersFragment
+import fragments.PreparingOrdersFragment
 import fragments.StoreOrderFragment
 import utils.Constants.KEY_TAB_POSITION
 
@@ -20,5 +22,7 @@ class TabsAdapter(fragment: Fragment) :
         }
         return fragment
     }
+
+
 
 }

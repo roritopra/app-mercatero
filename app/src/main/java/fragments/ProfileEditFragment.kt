@@ -29,7 +29,9 @@ import utils.Constants.KEY_CONSUMER
 import utils.Constants.KEY_IMAGES
 import utils.Constants.KEY_STORE
 import utils.Helper.hasPermissionsStorage
+import utils.Helper.hideProgressDialog
 import utils.Helper.requestStoragePermission
+import utils.Helper.showProgressDialog
 import java.io.IOException
 import java.io.InputStream
 
@@ -64,7 +66,7 @@ class ProfileEditFragment : BaseFragment() {
         binding.cancelBtn.setOnClickListener { navUp() }
         binding.okBtn.setOnClickListener {
 
-        if(imageStream!=null) {uploadFile()}else { updateUser() }
+            if(imageStream!=null) {uploadFile()}else { updateUser() }
         }
 
         initViews()
@@ -123,11 +125,16 @@ class ProfileEditFragment : BaseFragment() {
     }
 
     private fun uploadFile(){
+        context?.showProgressDialog()
         imageStream?.let {
             storageRef.putStream(it).addOnSuccessListener { task ->
                 task.storage.downloadUrl.addOnSuccessListener {imageUri->
                     updateUser(imageUri.toString())
                 }
+            }.addOnFailureListener {
+                Toast.makeText(requireActivity(),it.message,Toast.LENGTH_LONG).show()
+                hideProgressDialog()
+                Log.v("Profile",it.message.toString())
             }
         }
     }
@@ -159,10 +166,14 @@ class ProfileEditFragment : BaseFragment() {
 
         db.collection(Constants.COLLECTION_USERS).document(context?.getUserId().toString())
             .update(updates).addOnSuccessListener {
+                hideProgressDialog()
+                Toast.makeText(requireActivity(),"actualización exitosa",Toast.LENGTH_LONG).show()
                 navUp()
-        }.addOnFailureListener {
-            Log.v("Profile",it.message.toString())
-        }
+            }.addOnFailureListener {
+                Toast.makeText(requireActivity(),it.message,Toast.LENGTH_LONG).show()
+                hideProgressDialog()
+                Log.v("Profile",it.message.toString())
+            }
     }
 
     private fun navUp(){

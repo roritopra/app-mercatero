@@ -62,6 +62,7 @@
         android:fontFamily="@font/instrument_regular"
         android:layout_gravity="center"
         android:id="@+id/email"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
@@ -74,6 +75,7 @@
         android:fontFamily="@font/instrument_regular"
         android:layout_gravity="center"
         android:id="@+id/des"
+        android:gravity="center"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +99,7 @@
             android:fontFamily="@font/instrument_bold"
             android:gravity="center|start"
             android:text="Sobre mí"
+            android:id="@+id/about"
             android:drawableEnd="@drawable/ic_farward"
             android:drawablePadding="10dp"
             app:drawableStartCompat="@drawable/ic_account" />

@@ -91,21 +91,21 @@ class SetUpPasswordFragment : BaseFragment() {
                 val product=ProductModel()
                 product.name="Chicken"
                 product.rating=4.5f
-                product.storeName=store.name
+                product.store=store.name
                 product.storeId=store.id
                 product.price=400.0
                 product.description="this is chicken"
-                product.imgs= mutableListOf<String>()
+                product.images= mutableListOf<String>()
                 products.add(product)
 
                 val product1=ProductModel()
                 product1.name="Rice"
                 product1.rating=4.6f
-                product1.storeName=store.name
+                product1.store=store.name
                 product.storeId=store.id
                 product1.price=200.0
                 product1.description="this is rice"
-                product1.imgs= mutableListOf()
+                product1.images= mutableListOf()
                 products.add(product1)
 
                 store.products=products

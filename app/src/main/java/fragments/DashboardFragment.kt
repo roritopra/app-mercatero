@@ -123,6 +123,8 @@ class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
 
     override fun onCategoryClick(position: Int) {
         showStores(catgsList[position].name)
+
+
     }
 
     override fun onProductClick(position: Int) {

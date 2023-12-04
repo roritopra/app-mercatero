@@ -47,7 +47,7 @@
             android:fontFamily="@font/instrument_regular"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/store"
@@ -56,7 +56,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/instrument_regular"
             android:text="@string/app_name"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/price"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/instrument_bold"
-            android:text="$14.5"
+            android:text="$12.5"
             android:textColor="@color/yellow"
             android:textSize="14sp" />
     </LinearLayout>

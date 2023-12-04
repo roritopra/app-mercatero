@@ -79,7 +79,6 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
 
         }.addOnFailureListener {
             binding.progressBar.visibility=View.GONE
-            Log.v("Profile",it.message.toString())
         }
     }
 

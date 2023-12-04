@@ -147,9 +147,9 @@ class ProfileEditFragment : BaseFragment() {
 
 
         if(name.isEmpty()
-            ||sureName.isEmpty()||
+            ||des.isEmpty()||
             context?.getUserType()== KEY_CONSUMER
-            &&des.isEmpty() ){
+            &&sureName.isEmpty() ){
 
             Toast.makeText(requireContext(),"Todos los campos son obligatorios", Toast.LENGTH_LONG).show()
             return
@@ -157,11 +157,11 @@ class ProfileEditFragment : BaseFragment() {
 
         val updates: MutableMap<String, Any> = HashMap()
         updates["name"] = name
-        updates["surName"] = sureName
+        updates["des"] = des
 
 
         if(img.isNotEmpty()){updates["img"] = img}
-        if(context?.getUserType()== KEY_CONSUMER){ updates["des"] = des }
+        if(context?.getUserType()== KEY_CONSUMER){ updates["surName"] = sureName }
 
 
         db.collection(Constants.COLLECTION_USERS).document(context?.getUserId().toString())

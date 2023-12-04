@@ -25,6 +25,7 @@ class ProfileFragment : BaseFragment() {
     lateinit var binding: FragmentProfileBinding
     lateinit var auth: FirebaseAuth
     lateinit var db:FirebaseFirestore
+    var user:UserModel?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +50,13 @@ class ProfileFragment : BaseFragment() {
             findNavController().navigate(ProfileFragmentDirections.navToLogin())
         }
 
+        binding.about.setOnClickListener {
+            user?.let {
+                findNavController().navigate(ProfileFragmentDirections.navToEdit(it))
+            }
+
+        }
+
         context?.getUserId()?.let { getUser(it) }
 
 
@@ -56,12 +64,15 @@ class ProfileFragment : BaseFragment() {
 
     private fun getUser(id:String){
         db.collection(Constants.COLLECTION_USERS).whereEqualTo("id",id).get().addOnSuccessListener {
-            val user = it.documents[0]?.toObject(UserModel::class.java)
-            binding.email.text=user?.email
-            binding.name.text=user?.name
-            context?.let { it1 ->
-                if (user != null&&user.img.isNotEmpty()) {
-                    Glide.with(it1).load(user.img).into(binding.profileImg)
+            user = it.documents[0]?.toObject(UserModel::class.java)
+            user?.let {
+                binding.email.text=user?.email
+                binding.name.text=user?.name
+                binding.des.text=user?.des
+                context?.let { it1 ->
+                    if (user != null&&user!!.img.isNotEmpty()) {
+                        Glide.with(it1).load(user!!.img).into(binding.profileImg)
+                    }
                 }
             }
 

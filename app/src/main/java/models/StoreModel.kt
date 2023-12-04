@@ -50,6 +50,4 @@ data class StoreModel(
             return arrayOfNulls(size)
         }
     }
-
 }
-

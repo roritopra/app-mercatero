@@ -15,8 +15,8 @@ import utils.Constants.ITEM_VERTICAL
 import viewmodels.SharedViewModel
 
 
+class StoreDetailFragment : BaseFragment(),ProductsAdapter.OnClickListener {
 
-class StoreDetailFragment : BaseFragment() {
 
     private val sharedViewModel: SharedViewModel by viewModels({requireActivity()})
     lateinit var binding: FragmentStoreDetailBinding
@@ -40,13 +40,17 @@ class StoreDetailFragment : BaseFragment() {
         binding = FragmentStoreDetailBinding.bind(view)
 
         binding.backBtn.setOnClickListener { findNavController().navigateUp() }
+
         initViews()
 
+
     }
+
 
     private fun initViews(){
         val store=sharedViewModel.store
         store.products.let { productsList.addAll(it) }
+
         binding.name.text=store.name
         binding.distance.text="${store.distance} Km"
         binding.rating.text="${store.rating.toString()} calificación"
@@ -56,9 +60,12 @@ class StoreDetailFragment : BaseFragment() {
         val prdAdapter= ProductsAdapter(this,store.products,ITEM_VERTICAL)
         binding.productsRV.adapter=prdAdapter
 
+
     }
 
-    fun onProductClick(position: Int) {
+
+
+    override fun onProductClick(position: Int) {
         val product=productsList[position]
         findNavController().navigate(StoreDetailFragmentDirections.navToProduct(product))
     }

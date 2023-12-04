@@ -9,22 +9,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentDashboardBinding
 import models.CatgsModel
 import models.ProductModel
 import models.StoreModel
+import models.UserModel
 import utils.Constants
 import utils.Constants.ITEM_HORIZONTAL
 import viewmodels.SharedViewModel
 
 
 class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
-StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
+    StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
 
     private val sharedViewModel: SharedViewModel by viewModels({requireActivity()})
     lateinit var binding: FragmentDashboardBinding
@@ -34,6 +37,7 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
     val catgsList= mutableListOf<CatgsModel>()
     val productsList= mutableListOf<ProductModel>()
     val storesList= mutableListOf<StoreModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,7 +131,3 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
     }
 
 }
-
-
-
-

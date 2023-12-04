@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -53,13 +54,16 @@ class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDashboardBinding.bind(view)
-        navController=findNavController()
-        db= FirebaseFirestore.getInstance()
+        navController = findNavController()
+        db = FirebaseFirestore.getInstance()
+
+        binding.cart.setOnClickListener {
+            navController.navigate(DashboardFragmentDirections.navToCart())
+        }
+
         showCatgs()
-
-
-
     }
+
 
     private fun showCatgs(){
 
@@ -109,9 +113,6 @@ class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
 
 
     }
-
-
-
 
 
     override fun onStoreItemClick(position: Int) {

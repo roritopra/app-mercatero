@@ -189,6 +189,9 @@
         <action android:id="@+id/nav_to_product"
             app:destination="@+id/productDetailFragment"
             />
+        <action android:id="@+id/nav_to_cart"
+            app:destination="@+id/cartFragment"
+            />
 
     </fragment>
 

@@ -38,26 +38,10 @@ object Helper {
         dialog?.dismiss()
     }
 
-    var dialog : Dialog?=null
-    fun Context.showProgressDialog(){
-        dialog= Dialog(this)
-        val binding =
-            DialogProgressBinding.inflate(LayoutInflater.from(this))
-        dialog?.setContentView(binding.root)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.show()
-
-    }
-
-    fun hideProgressDialog(){
-        dialog?.dismiss()
-    }
-
     var storagePermissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
-
 
 
     fun Activity.hasPermissionsStorage():Boolean{

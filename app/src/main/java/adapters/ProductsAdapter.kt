@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import fragments.CartFragment
 import icesi.edu.co.mercatero_app.databinding.ListitemProductBinding
 import icesi.edu.co.mercatero_app.databinding.ListitemProductVerticalBinding
 import models.ProductModel
@@ -13,7 +12,7 @@ import utils.Constants.ITEM_VERTICAL
 
 
 class ProductsAdapter(private val mClickListener:
-                      CartFragment, private val items: List<ProductModel>,
+                      OnClickListener, private val items: List<ProductModel>,
                       val viewType: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

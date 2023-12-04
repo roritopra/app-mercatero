@@ -2,6 +2,7 @@ package fragments
 
 
 import adapters.ProductsAdapter
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,12 +48,13 @@ class StoreDetailFragment : BaseFragment(),ProductsAdapter.OnClickListener {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun initViews(){
         val store=sharedViewModel.store
         store.products.let { productsList.addAll(it) }
 
         binding.name.text=store.name
-        binding.distance.text="${store.distance} Km"
+        binding.distance.text="${store.distance.toString()} Km"
         binding.rating.text="${store.rating.toString()} calificación"
         binding.description.text=store.des
         binding.ratingBar.rating=store.rating

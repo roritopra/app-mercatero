@@ -4,6 +4,7 @@ package fragments
 import adapters.CatgsAdapter
 import adapters.ProductsAdapter
 import adapters.StoresAdapter
+import android.app.NotificationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import models.StoreModel
 import models.UserModel
 import utils.Constants
 import utils.Constants.ITEM_HORIZONTAL
+import utils.MyNotification
 import viewmodels.SharedViewModel
 
 
@@ -80,6 +82,9 @@ class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
         binding.catgsRV.adapter=adapter
 
         showStores(catgsList[0].name)
+
+
+
 
     }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentTrackOrderBinding
+import utils.MyNotification
 
 
 class TrackLocationFragment : BaseFragment() {
@@ -30,7 +31,6 @@ class TrackLocationFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTrackOrderBinding.bind(view)
-
         binding.storeView.setOnClickListener { navigate() }
         binding.backBtn.setOnClickListener { navigate() }
 

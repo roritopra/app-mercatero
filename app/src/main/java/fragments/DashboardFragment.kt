@@ -93,7 +93,6 @@ class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
         productsList.clear()
         storesList.clear()
 
-
         db.collection(Constants.COLLECTION_STORES).whereEqualTo("category",store).get().addOnSuccessListener {
             it.documents.forEach {
                 val store = it?.toObject(StoreModel::class.java)

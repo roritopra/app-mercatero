@@ -59,20 +59,20 @@ class ProductsAdapter(private val mClickListener:
         if(viewType== ITEM_HORIZONTAL){
             val hHolder=holder as ItemHolder
             hHolder.binding.title.text = item.name.toString()
-            hHolder.binding.store.text=item.storeName
-            hHolder.binding.price.text=item.price
+            hHolder.binding.store.text=item.store
+            hHolder.binding.price.text="$${item.price.toString()}"
             hHolder.itemView.let { it1 ->
-                if (item.img.isNotEmpty()) {
-                    Glide.with(it1).load(item.img).into(hHolder.binding.image)
+                if (item.images.isNotEmpty()) {
+                    Glide.with(it1).load(item.images[0]).into(hHolder.binding.image)
                 }
             }
         }else{
             val vHolder=holder as ItemVerticalHolder
             vHolder.binding.name.text = item.name.toString()
-            vHolder.binding.price.text=item.price
+            vHolder.binding.price.text="$${item.price.toString()}"
             vHolder.itemView.let { it1 ->
-                if (item.img.isNotEmpty()) {
-                    Glide.with(it1).load(item.img).into(vHolder.binding.image)
+                if (item.images.isNotEmpty()) {
+                    Glide.with(it1).load(item.images[0]).into(vHolder.binding.image)
                 }
             }
         }

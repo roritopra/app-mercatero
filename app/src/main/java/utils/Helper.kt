@@ -2,12 +2,18 @@ package utils
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.util.Log
+import android.view.LayoutInflater
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat
+import icesi.edu.co.mercatero_app.databinding.DialogProgressBinding
 import java.util.Locale
 
 object Helper {
@@ -17,6 +23,20 @@ object Helper {
         return sdf.format(date)
     }
 
+    var dialog : Dialog?=null
+    fun Context.showProgressDialog(){
+        dialog= Dialog(this)
+        val binding =
+            DialogProgressBinding.inflate(LayoutInflater.from(this))
+        dialog?.setContentView(binding.root)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.show()
+
+    }
+
+    fun hideProgressDialog(){
+        dialog?.dismiss()
+    }
 
     var storagePermissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,

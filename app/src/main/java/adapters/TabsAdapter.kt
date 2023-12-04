@@ -3,11 +3,14 @@ package adapters
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import fragments.PendingOrdersFragment
+import fragments.PreparingOrdersFragment
 import fragments.StoreOrderFragment
 import utils.Constants.KEY_TAB_POSITION
 
 
-class TabsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class TabsAdapter(fragment: Fragment) :
+    FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 3
 
@@ -19,5 +22,7 @@ class TabsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         }
         return fragment
     }
+
+
 
 }

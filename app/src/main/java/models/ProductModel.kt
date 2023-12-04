@@ -6,13 +6,13 @@ import android.os.Parcelable
 data class ProductModel(
     var id: String="",
     var name: String="",
-    var storeName: String="",
+    var store: String="",
     var storeId: String="",
     var rating: Float=0f,
     var description: String="",
     var price: Double=0.0,
     var counts:Int=0,
-    var imgs: MutableList<String> = mutableListOf<String>(),
+    var images: MutableList<String> = mutableListOf<String>(),
 ):Parcelable {
     constructor(parcel: Parcel) : this(){
         parcel.readString().toString()
@@ -31,13 +31,13 @@ data class ProductModel(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(name)
-        parcel.writeString(storeName)
+        parcel.writeString(store)
         parcel.writeString(storeId)
         parcel.writeFloat(rating)
         parcel.writeString(description)
         parcel.writeDouble(price)
         parcel.writeInt(counts)
-        parcel.writeStringList(imgs)
+        parcel.writeStringList(images)
     }
 
     override fun describeContents(): Int {

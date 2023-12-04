@@ -9,10 +9,9 @@ data class StoreModel(
     var distance: String="",
     var des: String="",
     var rating: Float=0f,
-    var img: String="",
+    var images: MutableList<String> = mutableListOf<String>(),
     var category: String="",
-    var products: MutableList<ProductModel> = mutableListOf<ProductModel>(),
-    var orders: MutableList<OrderModel> = mutableListOf<OrderModel>()
+    var products: MutableList<ProductModel> = mutableListOf<ProductModel>()
 ):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
@@ -20,10 +19,9 @@ data class StoreModel(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString().toFloat(),
+        parcel.createStringArrayList()?.toMutableList()!!,
         parcel.readString().toString(),
-        parcel.readString().toString(),
-        parcel.createTypedArrayList(ProductModel.CREATOR)?.toMutableList()!!,
-        parcel.createTypedArrayList(OrderModel.CREATOR)?.toMutableList()!!,
+        parcel.createTypedArrayList(ProductModel.CREATOR)?.toMutableList()!!
     ) {
     }
 
@@ -33,10 +31,9 @@ data class StoreModel(
         parcel.writeString(distance)
         parcel.writeString(des)
         parcel.writeFloat(rating)
-        parcel.writeString(img)
+        parcel.writeStringList(images)
         parcel.writeString(category)
         parcel.writeTypedList(products)
-        parcel.writeTypedList(orders)
     }
 
     override fun describeContents(): Int {
@@ -52,6 +49,4 @@ data class StoreModel(
             return arrayOfNulls(size)
         }
     }
-
 }
-

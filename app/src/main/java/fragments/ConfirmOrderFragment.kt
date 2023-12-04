@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentConfirmOrderBinding
-import icesi.edu.co.mercatero_app.databinding.FragmentStoreDetailBinding
 import models.OrderModel
 import models.ProductModel
 import utils.AppPreferences.getUserId
 import utils.Constants.COLLECTION_ORDERS
 import utils.Constants.KEY_ORDER
+import utils.MyNotification
 import utils.OrderStatus
 import viewmodels.SharedViewModel
 import java.util.Date
@@ -32,6 +32,8 @@ class ConfirmOrderFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MyNotification.Notification.createNotificationChannel(requireContext())
+
     }
 
     override fun onCreateView(
@@ -95,6 +97,7 @@ class ConfirmOrderFragment : BaseFragment() {
                 document.set(order).addOnSuccessListener {
                     sharedViewModel.productsList.clear()
                     sharedViewModel.total=0.0
+                    MyNotification.Notification.showSimpleNotification(requireContext(), "¡Pedido realizado!", "Estamos esperando la confirmación de la tienda")
                     if(index==productsByStores.size-1){
                         navigate()
                     }

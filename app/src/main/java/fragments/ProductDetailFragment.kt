@@ -2,7 +2,11 @@ package fragments
 
 
 import adapters.ImagesAdapter
+import adapters.ProductsAdapter
+import adapters.StoresAdapter
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +14,12 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.firestore.FirebaseFirestore
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentProductDetailBinding
 import models.ProductModel
+import models.StoreModel
+import utils.Constants
 import viewmodels.SharedViewModel
 
 
@@ -22,6 +29,9 @@ class ProductDetailFragment : BaseFragment() {
     val args:ProductDetailFragmentArgs by navArgs()
     lateinit var binding: FragmentProductDetailBinding
     var itemCounts=0
+    lateinit var db: FirebaseFirestore
+    val productsList= mutableListOf<ProductModel>()
+
 
 
 
@@ -46,6 +56,7 @@ class ProductDetailFragment : BaseFragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initViews(){
         val product=args.product
         binding.name.text=product.name
@@ -78,6 +89,8 @@ class ProductDetailFragment : BaseFragment() {
                 Toast.makeText(requireContext(),"agregar elementos",Toast.LENGTH_LONG).show()
             }
         }
+
+
 
     }
 

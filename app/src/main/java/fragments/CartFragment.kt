@@ -12,6 +12,7 @@ import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentCartBinding
 import models.ProductModel
 import utils.Constants
+import utils.MyNotification
 import viewmodels.SharedViewModel
 
 class CartFragment : BaseFragment(), ProductsAdapter.OnClickListener {
@@ -43,6 +44,8 @@ class CartFragment : BaseFragment(), ProductsAdapter.OnClickListener {
         productsList.clear()
         productsList.addAll(sharedViewModel.productsList)
         calculateOrderSum()
+        MyNotification.Notification.createNotificationChannel(requireContext())
+
 
 
     }
@@ -65,6 +68,8 @@ class CartFragment : BaseFragment(), ProductsAdapter.OnClickListener {
 
         val adapter=ProductsAdapter(this,productsList, Constants.ITEM_HORIZONTAL)
         binding.productsRV.adapter=adapter
+        MyNotification.Notification.showSimpleNotification(requireContext(), "Promo de helados al 30%", "Encuentra los mejores sabores y precios aquí")
+
 
     }
 

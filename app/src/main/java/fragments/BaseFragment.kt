@@ -58,4 +58,5 @@ abstract class BaseFragment: Fragment(),CoroutineScope {
         return rootView
     }
 
+
 }

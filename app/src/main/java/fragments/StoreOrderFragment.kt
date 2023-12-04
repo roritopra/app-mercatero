@@ -17,6 +17,7 @@ import utils.Constants
 import utils.Constants.COLLECTION_ORDERS
 import utils.Constants.KEY_ORDER
 import utils.Constants.KEY_TAB_POSITION
+import utils.MyNotification
 import utils.OrderStatus
 
 
@@ -27,6 +28,7 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
     val ordersList= mutableListOf<OrderModel>()
     lateinit var status: OrderStatus
     lateinit var adapter: StoreOrdersAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +41,7 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStoreOrdersBinding.bind(view)
         db= FirebaseFirestore.getInstance()
+        MyNotification.Notification.createNotificationChannel(requireContext())
 
         status=when(arguments?.getInt(KEY_TAB_POSITION)){
             0->OrderStatus.PENDING
@@ -97,6 +100,11 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
             db.collection(COLLECTION_ORDERS).document(orderId).update(updates).addOnSuccessListener {
                 ordersList.removeAt(position)
                 adapter.notifyItemRemoved(position)
+
+                val notificationTitle = "Estado del pedido actualizado"
+                val notificationMessage =
+                    "El pedido #$orderId ahora está en estado: ${newStatus.name}"
+                MyNotification.Notification.showSimpleNotification(requireContext(), notificationTitle, notificationMessage)
 
             }
         }

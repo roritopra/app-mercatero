@@ -2,26 +2,33 @@ package fragments
 
 
 import adapters.StoreOrdersAdapter
-import adapters.StoresAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import icesi.edu.co.mercatero_app.R
 import icesi.edu.co.mercatero_app.databinding.FragmentStoreOrdersBinding
-import models.StoreModel
-import models.StoreOrderModel
+import models.OrderModel
+import utils.AppPreferences.getUserId
+import utils.Constants
+import utils.Constants.COLLECTION_ORDERS
+import utils.Constants.KEY_ORDER
+import utils.Constants.KEY_TAB_POSITION
+import utils.MyNotification
+import utils.OrderStatus
 
 
 class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
 
     lateinit var binding: FragmentStoreOrdersBinding
+    lateinit var db: FirebaseFirestore
+    val ordersList= mutableListOf<OrderModel>()
+    lateinit var status: OrderStatus
+    lateinit var adapter: StoreOrdersAdapter
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,34 +40,75 @@ class StoreOrderFragment : BaseFragment(),StoreOrdersAdapter.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentStoreOrdersBinding.bind(view)
+        db= FirebaseFirestore.getInstance()
+        MyNotification.Notification.createNotificationChannel(requireContext())
 
-
-        showOrders()
-
-
-    }
-
-
-    private fun showOrders(){
-
-        val list= mutableListOf<StoreOrderModel>()
-        for(i in 1..5){
-            val order= StoreOrderModel()
-            list.add(order)
+        status=when(arguments?.getInt(KEY_TAB_POSITION)){
+            0->OrderStatus.PENDING
+            1->OrderStatus.PROCESSING
+            else->OrderStatus.READY
         }
 
-        val adapter= StoreOrdersAdapter(this,list)
-        binding.ordersRV.adapter=adapter
+
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        context?.getUserId()?.let { getOrders(it,status.Name) }
     }
 
 
-    private fun navigate(){
-        //findNavController().navigate(FragmentUserTypeDirections.navToRegister())
+    private fun getOrders(id:String,status:String){
+
+        binding.progressBar.visibility=View.VISIBLE
+        ordersList.clear()
+        var query: Query = db.collection(Constants.COLLECTION_ORDERS)
+
+        query = query.whereEqualTo("storeId",id)
+        query = query.whereEqualTo("status",status)
+        query.get().addOnSuccessListener {
+            it.documents.forEach {
+                val order = it.toObject(OrderModel::class.java)
+                if (order != null) {
+                    ordersList.add(order)
+                }
+            }
+
+            adapter=StoreOrdersAdapter(this,ordersList)
+            binding.ordersRV.adapter=adapter
+            binding.progressBar.visibility=View.GONE
+
+        }.addOnFailureListener {
+            binding.progressBar.visibility=View.GONE
+        }
     }
 
     override fun onOrderItemClick(position: Int) {
 
+        val orderId=ordersList[position].orderId
+        val newStatus=when(status){
+            OrderStatus.PENDING->OrderStatus.PROCESSING
+            OrderStatus.PROCESSING->OrderStatus.READY
+            else->null
+        }
 
+        if(newStatus!=null) {
+            val updates: MutableMap<String, Any> = HashMap()
+            updates["status"] = newStatus.Name
+            db.collection(COLLECTION_ORDERS).document(orderId).update(updates).addOnSuccessListener {
+                ordersList.removeAt(position)
+                adapter.notifyItemRemoved(position)
+
+                val notificationTitle = "Estado del pedido actualizado"
+                val notificationMessage =
+                    "El pedido #$orderId ahora está en estado: ${newStatus.name}"
+                MyNotification.Notification.showSimpleNotification(requireContext(), notificationTitle, notificationMessage)
+
+            }
+        }
     }
+
 
 }

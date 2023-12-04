@@ -1,16 +1,19 @@
 package icesi.edu.co.mercatero_app
 
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
+import android.util.Log
 import android.view.MenuInflater
 import android.view.View
-import androidx.appcompat.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import icesi.edu.co.mercatero_app.databinding.ActivityMainBinding
 import utils.AppPreferences.getUserType
 import utils.Constants.KEY_CONSUMER

@@ -6,4 +6,6 @@
     <string name="login">Inicia sesión</string>
     <string name="consumidor">Consumidor</string>
     <string name="pass_checkbox_msg1"><u>Estoy de acuerdo con la política de privacidad y el uso de los datos solicitados.</u></string>
+    <string name="cancelar"><u>Cancelar</u></string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>

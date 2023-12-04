@@ -31,14 +31,14 @@ class SetUpLocationFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSetLocationBinding.bind(view)
 
-        //binding.okBtn.setOnClickListener { navigate() }
+        binding.okBtn.setOnClickListener { navigate() }
 
     }
 
 
 
     private fun navigate(){
-       // findNavController().navigate(Set.navToSetupPass())
+        findNavController().navigate(SetUpLocationFragmentDirections.navToMap())
     }
 
 }

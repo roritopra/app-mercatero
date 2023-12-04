@@ -10,13 +10,19 @@ import models.CatgsModel
 
 class CatgsAdapter(private val mClickListener: OnClickListener, private val items: List<CatgsModel>) :
     RecyclerView.Adapter<CatgsAdapter.ItemHolder>() {
-
+    private var lastSelectedPosition = RecyclerView.NO_POSITION
 
     inner class ItemHolder(binding: ListitemCatgsBinding) : RecyclerView.ViewHolder(binding.root) {
         var binding: ListitemCatgsBinding
         init {
             this.binding = binding
-            itemView.setOnClickListener { mClickListener.onClick(adapterPosition) }
+            itemView.setOnClickListener { mClickListener.onCategoryClick(adapterPosition) }
+            itemView.setOnClickListener {
+                notifyItemChanged(lastSelectedPosition)
+                lastSelectedPosition = adapterPosition
+                notifyItemChanged(adapterPosition)
+                mClickListener.onCategoryClick(adapterPosition)
+            }
         }
     }
 
@@ -35,6 +41,14 @@ class CatgsAdapter(private val mClickListener: OnClickListener, private val item
         val item=items[position]
         holder.binding.title.text = item.name.toString()
         holder.binding.icon.setImageResource(item.icon)
+        holder.binding.root.isSelected = lastSelectedPosition == position
+
+        if (position == 0 && lastSelectedPosition == RecyclerView.NO_POSITION) {
+            lastSelectedPosition = 0
+            holder.binding.root.isSelected = true
+        }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -47,6 +61,6 @@ class CatgsAdapter(private val mClickListener: OnClickListener, private val item
 
 
     interface OnClickListener{
-        fun onClick(position: Int)
+        fun onCategoryClick(position: Int)
     }
 }

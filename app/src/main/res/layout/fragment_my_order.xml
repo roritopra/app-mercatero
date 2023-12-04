@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="30dp"
+        android:id="@+id/topView"
         app:layout_constraintTop_toBottomOf="@id/backBtn">
 
         <TextView
@@ -78,60 +79,60 @@
                     android:text="Ordenado el 11 de septiembre de 2023"
                     android:id="@+id/date"
                     />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-               >
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
                     >
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/instrument_regular"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:text="Items: "
-                        android:id="@+id/titleItems"
-                        />
-                    <TextView
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/instrument_regular"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="Items: "
+                            android:id="@+id/titleItems"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/instrument_bold"
+                            android:textSize="12sp"
+                            android:text="5"
+                            android:id="@+id/itemsCount"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/instrument_bold"
-                        android:textSize="12sp"
-                        android:text="5"
-                        android:id="@+id/itemsCount"
-                        />
+                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/instrument_regular"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="Total: "
+                            android:id="@+id/titleTotal"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/instrument_bold"
+                            android:textSize="12sp"
+                            android:text="$50"
+                            android:id="@+id/total"
+                            />
+                    </LinearLayout>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="20dp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/instrument_regular"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:text="Total: "
-                        android:id="@+id/titleTotal"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/instrument_bold"
-                        android:textSize="12sp"
-                        android:text="$50"
-                        android:id="@+id/total"
-                        />
-                </LinearLayout>
-            </LinearLayout>
 
             </LinearLayout>
 
@@ -146,7 +147,7 @@
             android:background="@color/grayLite"/>
 
         <LinearLayout
-             android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             android:layout_marginHorizontal="20dp"
@@ -336,9 +337,32 @@
             </LinearLayout>
 
 
-            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/ordersRV"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="@id/ordersRV"
+        app:layout_constraintBottom_toBottomOf="@id/ordersRV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/progressBar"/>
 
 
 

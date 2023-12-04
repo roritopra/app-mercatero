@@ -2,6 +2,7 @@ package adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,7 +12,8 @@ import models.OrderModel
 import utils.OrderStatus
 
 
-class StoreOrdersAdapter(private val mClickListener: OnClickListener, private val items: List<OrderModel>) :
+class StoreOrdersAdapter(private val mClickListener: OnClickListener,
+                         private val items: List<OrderModel>,val isStore:Boolean=true) :
     RecyclerView.Adapter<StoreOrdersAdapter.ItemHolder>() {
 
 
@@ -52,6 +54,13 @@ class StoreOrdersAdapter(private val mClickListener: OnClickListener, private va
         }
 
         holder.binding.acceptBtn.text = acceptBtnTxt
+        if(isStore) {
+            holder.binding.acceptBtn.text = acceptBtnTxt
+            holder.binding.acceptBtn.visibility = View.VISIBLE
+        }else{
+            holder.binding.status.text = item.status
+            holder.binding.status.visibility = View.VISIBLE
+        }
 
     }
 

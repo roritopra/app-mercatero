@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -20,11 +19,14 @@ import models.CatgsModel
 import models.ProductModel
 import models.StoreModel
 import utils.Constants
+import utils.Constants.ITEM_HORIZONTAL
+import viewmodels.SharedViewModel
 
 
 class DashboardFragment : BaseFragment(),CatgsAdapter.OnClickListener,
 StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
 
+    private val sharedViewModel: SharedViewModel by viewModels({requireActivity()})
     lateinit var binding: FragmentDashboardBinding
     lateinit var navController: NavController
     lateinit var db: FirebaseFirestore
@@ -110,7 +112,8 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
 
     override fun onStoreItemClick(position: Int) {
         val store=storesList[position]
-        navController.navigate(DashboardFragmentDirections.navToStore(store))
+        sharedViewModel.store=store
+        navController.navigate(DashboardFragmentDirections.navToStore())
     }
 
     override fun onCategoryClick(position: Int) {
@@ -119,8 +122,12 @@ StoresAdapter.OnClickListener,ProductsAdapter.OnClickListener{
 
     override fun onProductClick(position: Int) {
         val product=productsList[position]
+        sharedViewModel.store= storesList.find { it.id==product.storeId }!!
         navController.navigate(DashboardFragmentDirections.navToProduct(product))
     }
 
 }
+
+
+
 

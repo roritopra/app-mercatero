@@ -12,6 +12,7 @@ data class StoreModel(
     var images: MutableList<String> = mutableListOf<String>(),
     var category: String="",
     var products: MutableList<ProductModel> = mutableListOf<ProductModel>()
+
 ):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
